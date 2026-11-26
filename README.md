@@ -1,4 +1,4 @@
-# CoolNest 3D
+# CoolNest 3D <UNDER MAINTAINECE - STILL IN PROGRESS W/ LOCAL MEMORY>
 
 Indoor temperature forecasting, airflow and heat what-ifs, and context-aware ventilation guidance for first-time homeowners in dense Indonesian cities.
 Frontend prototype for a Computer Science – Artificial Intelligence project at BINUS University.
