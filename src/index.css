@@ -1,0 +1,183 @@
+@import '@fontsource-variable/inter';
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * CoolNest design tokens.
+ * Base: airy blue-white canvas, white surfaces, breeze (teal-blue) primary,
+ * mist blue for humidity/environment, ochre for warnings, clay for errors.
+ * Chart series colours are validated for colour-vision deficiency
+ * (see src/components/charts/chartTheme.ts).
+ */
+@theme {
+  --font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --color-canvas: #f3f7f8;
+  --color-surface: #ffffff;
+  --color-ink: #16232a;
+  --color-ink-soft: #44555d;
+  --color-ink-muted: #73858d;
+  --color-line: #e0e8eb;
+  --color-line-strong: #cbd8dd;
+
+  /* breeze: the primary airy teal-blue (fresh air in a home) */
+  --color-breeze-50: #edf6f8;
+  --color-breeze-100: #dbedf2;
+  --color-breeze-200: #b7dbe5;
+  --color-breeze-300: #88c2d3;
+  --color-breeze-400: #529fb7;
+  --color-breeze-500: #2f849f;
+  --color-breeze-600: #22708a;
+  --color-breeze-700: #1b5d74;
+  --color-breeze-800: #164c61;
+  --color-breeze-900: #0f3a4b;
+
+  /* linen: warm home neutral used sparingly for floors and home illustrations */
+  --color-linen-50: #faf7f2;
+  --color-linen-100: #f2ece2;
+  --color-linen-300: #dccdb6;
+  --color-linen-500: #b49b78;
+
+  --color-mist-50: #f0f6fb;
+  --color-mist-100: #dcebf5;
+  --color-mist-200: #bcd8ec;
+  --color-mist-400: #6aa5d2;
+  --color-mist-500: #2a7fc4;
+  --color-mist-700: #1f5a8a;
+
+  --color-ochre-50: #fbf6ea;
+  --color-ochre-100: #f5e7c6;
+  --color-ochre-300: #e0bb6c;
+  --color-ochre-500: #b7862f;
+  --color-ochre-700: #7f5a1a;
+
+  /* forecast series (validated categorical slot 4) */
+  --color-forecast-500: #8460c4;
+  --color-forecast-700: #6b4fa8;
+  --color-forecast-50: #f4f0fb;
+
+  --color-clay-50: #fbf0ed;
+  --color-clay-100: #f5d9d1;
+  --color-clay-500: #b4533c;
+  --color-clay-700: #873a28;
+
+  --shadow-card: 0 1px 2px rgb(16 40 52 / 0.04), 0 4px 16px -6px rgb(16 40 52 / 0.09);
+  --shadow-lift: 0 2px 4px rgb(16 40 52 / 0.05), 0 16px 40px -12px rgb(16 40 52 / 0.2);
+}
+
+/* Dark theme: same token names, re-stepped for a dark surface. */
+:root.dark {
+  --color-canvas: #0c1418;
+  --color-surface: #131e23;
+  --color-ink: #e5eef1;
+  --color-ink-soft: #b4c3c9;
+  --color-ink-muted: #82959c;
+  --color-line: #213139;
+  --color-line-strong: #2e434c;
+
+  --color-breeze-50: #0f2229;
+  --color-breeze-100: #132d36;
+  --color-breeze-200: #1b4150;
+  --color-breeze-300: #285c6f;
+  --color-breeze-400: #3b8099;
+  --color-breeze-500: #58a7c0;
+  --color-breeze-600: #7cc0d4;
+  --color-breeze-700: #a3d6e4;
+  --color-breeze-800: #2a7d97;
+  --color-breeze-900: #3590ab;
+
+  --color-linen-50: #1d1a15;
+  --color-linen-100: #2a251d;
+  --color-linen-300: #5c5140;
+  --color-linen-500: #b8a283;
+
+  --color-mist-50: #122130;
+  --color-mist-100: #172d44;
+  --color-mist-200: #21415f;
+  --color-mist-400: #5d9bd0;
+  --color-mist-500: #6aaee6;
+  --color-mist-700: #9ccaf1;
+
+  --color-ochre-50: #251d10;
+  --color-ochre-100: #3a2c14;
+  --color-ochre-300: #7d6026;
+  --color-ochre-500: #d9a84e;
+  --color-ochre-700: #ecc77d;
+
+  --color-forecast-500: #a68be0;
+  --color-forecast-700: #bfa8f0;
+  --color-forecast-50: #211a33;
+
+  --color-clay-50: #2b1611;
+  --color-clay-100: #4a241b;
+  --color-clay-500: #e07a62;
+  --color-clay-700: #f2a895;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px -6px rgb(0 0 0 / 0.4);
+  --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.35), 0 16px 40px -12px rgb(0 0 0 / 0.6);
+}
+
+/* Compact layout tightens spacing slightly */
+:root.compact {
+  font-size: 15px;
+}
+
+:root.reduce-motion *,
+:root.reduce-motion *::before,
+:root.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  transition-duration: 0.01ms !important;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: 'cv11', 'ss01';
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-breeze-500);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Range input styling */
+input[type='range'] {
+  accent-color: var(--color-breeze-700);
+}
+
+/* Recharts: quieter defaults */
+.recharts-cartesian-axis-tick-value {
+  fill: var(--color-ink-muted);
+  font-size: 11px;
+}
+.recharts-surface:focus,
+.recharts-wrapper:focus,
+.recharts-sector:focus {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}
